@@ -5,12 +5,10 @@
 	{
         "#format"		"{1:s}"
 		"en"		    "{1} is the VIP, CTs protect the VIP from the Terrorists!"
-        //"en"		"\"\x04{1}\x01\" \x06 is the VIP, CTs protect the VIP from the Terrorists!"
 	}
 	"You_are_the_VIP"
 	{
 		"en"		"You are the VIP, don't buy anything since you'll drop it!"
-        //"en"		"\x02You are the VIP, don't buy anything since you'll drop it!"
 	}
 
 }

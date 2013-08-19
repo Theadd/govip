@@ -10,6 +10,7 @@
 #include <sourcemod>
 #include <cstrike>
 #include <sdktools>
+#include <sdktools_sound>
 #include <sdktools_functions>
 #include <sdkhooks>
 
@@ -22,7 +23,7 @@ public Plugin:myinfo =
 	name = "GO:VIP",
 	author = "KyleS (CSS VIP) & pimpinjuice (CSGO Port)",
 	description = "GO:VIP is a simple VIP mode. At the beginning of each round, a random Counter-Terrorist will become the VIP. It is up to the rest of the Counter-Terrorists to escort the VIP safely to one of the rescue zones on the map. It is up to the Terrorists to kill the VIP before he is able to escape. The VIP is equipped with only a pistol with limited ammo and a knife.",
-	version = "1.0",
+	version = "1.10",
 	url = "https://forums.alliedmods.net/showthread.php?p=1740993"
 };
 
@@ -41,6 +42,7 @@ new Handle:CVarVIPWeapon = INVALID_HANDLE;
 new MyWeaponsOffset = 0;
 new Handle:RescueZones = INVALID_HANDLE;
 new bool:RoundComplete = false;
+new bool:isYouAreVipPlayed = false;
 
 // 02. Forwards
 public OnPluginStart() {
@@ -88,6 +90,12 @@ public OnClientDisconnect(client) {
 }
 
 public OnMapStart() {
+
+	PrecacheSound("govip/viprescued.mp3", true);
+	PrecacheSound("govip/youarevip.mp3", true);
+	AddFileToDownloadsTable("sound/govip/viprescued.mp3");
+	AddFileToDownloadsTable("sound/govip/youarevip.mp3");
+
 	new String:buffer[512];
 	
 	new trigger = -1;
@@ -140,6 +148,7 @@ public OnMapStart() {
 // 03. Events
 public Action:Event_RoundStart(Handle:event, const String:name[], bool:dontBroadcast) {
 	RoundComplete = false;
+	isYouAreVipPlayed = true;
 	
 	CurrentVIP = GetRandomPlayerOnTeam(CS_TEAM_CT, LastVIP);
 	
@@ -168,10 +177,11 @@ public Action:Event_RoundStart(Handle:event, const String:name[], bool:dontBroad
 	new String:VIPName[128];
 	GetClientName(CurrentVIP, VIPName, sizeof(VIPName));
 
-	PrintToChatAll("\x01[GO:VIP] \"\x04%s\x01\" \x06 is the VIP, CTs protect the VIP from the Terrorists!", VIPName);
-	//PrintToChatAll("\x01[GO:VIP] %T", "Player_is_the_VIP", VIPName);
-	PrintToChat(CurrentVIP, "\x01[GO:VIP] \x02You are the VIP, don't buy anything since you'll drop it!");
-	//PrintToChat(CurrentVIP, "\x01[GO:VIP] %T", "You_are_the_VIP", CurrentVIP);
+	//PrintToChatAll("\x01[GO:VIP] \"\x04%s\x01\" \x06 is the VIP, CTs protect the VIP from the Terrorists!", VIPName);
+	PrintToChatAll("\x01[GO:VIP]\x04 %t", "Player_is_the_VIP", VIPName);
+	//PrintToChat(CurrentVIP, "\x01[GO:VIP] \x02You are the VIP, don't buy anything since you'll drop it!");
+	PrintToChat(CurrentVIP, "\x01[GO:VIP]\x02 %t", "You_are_the_VIP", CurrentVIP);
+	PlayYouAreVipSound(CurrentVIP);
 	//EDIT
 	if (IsValidPlayer(LastVIP)) {
 		SetEntityRenderColor(LastVIP, 0, 0, 0, 0);
@@ -265,10 +275,11 @@ public Action:GOVIP_MainLoop(Handle:timer) {
 				new String:VIPName[128];
 				GetClientName(CurrentVIP, VIPName, sizeof(VIPName));
 				
-				PrintToChatAll("\x01[GO:VIP] \"\x04%s\x01\" \x06 is the VIP, CTs protect the VIP from the Terrorists!", VIPName);
-				PrintToChat(CurrentVIP, "\x01[GO:VIP] \x02You are the VIP, don't buy anything since you'll drop it!");
-                //PrintToChatAll("\x01[GO:VIP] %T", "Player_is_the_VIP", VIPName);
-                //PrintToChat(CurrentVIP, "\x01[GO:VIP] %T", "You_are_the_VIP", CurrentVIP);
+				//PrintToChatAll("\x01[GO:VIP] \"\x04%s\x01\" \x06 is the VIP, CTs protect the VIP from the Terrorists!", VIPName);
+				//PrintToChat(CurrentVIP, "\x01[GO:VIP] \x02You are the VIP, don't buy anything since you'll drop it!");
+				PrintToChatAll("\x01[GO:VIP]\x04 %t", "Player_is_the_VIP", VIPName);
+				PrintToChat(CurrentVIP, "\x01[GO:VIP]\x02 %t", "You_are_the_VIP", CurrentVIP);
+				PlayYouAreVipSound(CurrentVIP);
 				//EDIT
 				if (IsValidPlayer(LastVIP)) {
 					SetEntityRenderColor(LastVIP, 0, 0, 0, 0);
@@ -319,6 +330,7 @@ public Action:GOVIP_MainLoop(Handle:timer) {
 					CS_TerminateRound(5.0, CSRoundEnd_CTWin);
 
 					PrintToChatAll("%s", "[GO:VIP] The \x04VIP\x01 has been rescued, \x04Counter-Terrorists\x01 win.");
+					PlaySoundToAll("govip/viprescued.mp3");
 					
 					break;
 				}
@@ -451,4 +463,36 @@ public TouchRescueZone(trigger, client) {
 	CurrentVIP = 0;
 	
 	PrintToChatAll("[GO:VIP] The VIP has been rescued, Counter-Terrorists win.");
+	PlaySoundToAll("govip/viprescued.mp3");
+}
+
+/*public PlaySoundToAll(const String:sample[])
+{
+	PrecacheSound(sample); 
+	for (new i = 1; i <= MaxClients; i++)
+	{
+		if (IsClientInGame(i))
+		{
+			EmitSoundToClient(i, sample);
+		}
+	}
+}*/
+
+stock PlaySoundToAll(const String:soundFile[])
+{
+	for (new i = 1; i <= MaxClients; i++)
+	{
+		if(IsClientInGame(i) && !IsFakeClient(i))
+		{
+			ClientCommand(i, "play *%s", soundFile);
+		}
+	}
+}
+
+stock PlayYouAreVipSound(client)
+{
+	if (!isYouAreVipPlayed) {
+		isYouAreVipPlayed = true;
+		ClientCommand(client, "play *%s", "govip/youarevip.mp3");
+	}
 }

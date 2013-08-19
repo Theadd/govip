@@ -3,12 +3,10 @@
 	"Player_is_the_VIP"
 	{
 		"es"		"{1} es VIP, los antiterroristas deben proteger al VIP de los terroristas!"
-        //"es"		"\x04{1}\x06 es VIP, los antiterroristas deben proteger al VIP de los terroristas!"
 	}
 	"You_are_the_VIP"
 	{
 		"es"		"Eres el jugador VIP, no compres nada ya que se te va a caer automaticamente!"
-        //"es"		"\x02Eres el jugador VIP, no compres nada ya que se te va a caer automaticamente!"
 	}
 
 }
