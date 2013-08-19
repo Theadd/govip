@@ -32,3 +32,32 @@ This plugin will activate only when playing the maps which have its rescue zones
 * Prevented "Terrorist Win" after VIP have been rescued and then died.
 * Added plugin info (Since there was no info provided)
 
+## ADDITIONAL MAPS
+The following maps are well suited for playing in VIP Mod mode even not being developed for it.
+
+### <a href="http://csgo.gamebanana.com/maps/169201">ar_nomercy</a>
+Rescue zone is a chopper platform near terrorists spawn which can be accessed from several paths
+##### Add in rescue_zones.cfg:
+
+    "ar_nomercy"
+    {
+        "Rescue Zone"
+        {
+            "coords" "413.607971 -603.788757 380.093811"
+            "radius" "150"
+        }
+    }
+
+### <a href="http://csgo.gamebanana.com/maps/171236">cs_creek</a>
+Rescue zone is a chapel near terrorists spawn, this is a big and resource intensive map.
+##### Add in rescue_zones.cfg:
+
+    "cs_creek"
+    {
+    	"Rescue Zone"
+    	{
+    		"coords" "742.230591 1096.808472 1427.890625"
+    		"radius" "100"
+    	}
+    }
+
