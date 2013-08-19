@@ -44,6 +44,9 @@ new bool:RoundComplete = false;
 
 // 02. Forwards
 public OnPluginStart() {
+
+	LoadTranslations("govip.phrases");
+
 	CVarMinCT = CreateConVar("govip_min_ct", "2", "Minimum number of CTs to play GOVIP");
 	CVarMinT = CreateConVar("govip_min_t", "1", "Minimum number of Ts to play GOVIP");
 	CVarVIPWeapon = CreateConVar("govip_weapon", "weapon_p250", "Weapon given to VIP");
@@ -164,9 +167,11 @@ public Action:Event_RoundStart(Handle:event, const String:name[], bool:dontBroad
 	
 	new String:VIPName[128];
 	GetClientName(CurrentVIP, VIPName, sizeof(VIPName));
-	
+
 	PrintToChatAll("\x01[GO:VIP] \"\x04%s\x01\" \x06 is the VIP, CTs protect the VIP from the Terrorists!", VIPName);
+	//PrintToChatAll("\x01[GO:VIP] %T", "Player_is_the_VIP", VIPName);
 	PrintToChat(CurrentVIP, "\x01[GO:VIP] \x02You are the VIP, don't buy anything since you'll drop it!");
+	//PrintToChat(CurrentVIP, "\x01[GO:VIP] %T", "You_are_the_VIP", CurrentVIP);
 	//EDIT
 	if (IsValidPlayer(LastVIP)) {
 		SetEntityRenderColor(LastVIP, 0, 0, 0, 0);
@@ -262,6 +267,8 @@ public Action:GOVIP_MainLoop(Handle:timer) {
 				
 				PrintToChatAll("\x01[GO:VIP] \"\x04%s\x01\" \x06 is the VIP, CTs protect the VIP from the Terrorists!", VIPName);
 				PrintToChat(CurrentVIP, "\x01[GO:VIP] \x02You are the VIP, don't buy anything since you'll drop it!");
+                //PrintToChatAll("\x01[GO:VIP] %T", "Player_is_the_VIP", VIPName);
+                //PrintToChat(CurrentVIP, "\x01[GO:VIP] %T", "You_are_the_VIP", CurrentVIP);
 				//EDIT
 				if (IsValidPlayer(LastVIP)) {
 					SetEntityRenderColor(LastVIP, 0, 0, 0, 0);
