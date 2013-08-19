@@ -1,5 +1,6 @@
 "Phrases"
 {
+
 	"Player_is_the_VIP"
 	{
 		"es"		"{1} es VIP, los antiterroristas deben proteger al VIP de los terroristas!"
@@ -8,5 +9,29 @@
 	{
 		"es"		"Eres el jugador VIP, no compres nada ya que se te va a caer automaticamente!"
 	}
-
+    "VIP_has_been_rescued"
+    {
+        "es"        "El jugador VIP ha sido rescatado, ganan los Antiterroristas."
+    }
+    "VIP_no_change_team"
+    {
+        "es"        "No esta permitido cambiar de equipo siendo el jugador VIP."
+    }
+    "Game_paused"
+    {
+        "es"        "Partida en pausa, esperando a más jugadores."
+    }
+    "Game_start"
+    {
+        "es"        "Iniciando la partida!"
+    }
+    "VIP_died"
+    {
+        "es"        "El jugador VIP ha muerto, ganan los terroristas!"
+    }
+    "VIP_left"
+    {
+        "es"        "El jugador VIP ha abandonado la partida, se termina la ronda en empate."
+    }
+    
 }

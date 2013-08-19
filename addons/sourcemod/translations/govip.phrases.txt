@@ -10,5 +10,29 @@
 	{
 		"en"		"You are the VIP, don't buy anything since you'll drop it!"
 	}
+    "VIP_has_been_rescued"
+    {
+        "en"        "The VIP has been rescued, Counter-Terrorists win."
+    }
+    "VIP_no_change_team"
+    {
+        "en"        "You are not allowed to change teams while you are the VIP."
+    }
+    "Game_paused"
+    {
+        "en"        "Game paused, waiting for more players."
+    }
+    "Game_start"
+    {
+        "en"        "Starting the game!"
+    }
+    "VIP_died"
+    {
+        "en"        "The VIP has died, Terrorists win!"
+    }
+    "VIP_left"
+    {
+        "en"        "The VIP has left, round ends in a draw."
+    }
 
 }
