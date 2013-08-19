@@ -51,7 +51,7 @@ public OnPluginStart() {
 
 	CVarMinCT = CreateConVar("govip_min_ct", "2", "Minimum number of CTs to play GOVIP");
 	CVarMinT = CreateConVar("govip_min_t", "1", "Minimum number of Ts to play GOVIP");
-	CVarVIPWeapon = CreateConVar("govip_weapon", "weapon_p250", "Weapon given to VIP");
+	CVarVIPWeapon = CreateConVar("govip_weapon", "weapon_hkp2000", "Weapon given to VIP");
 	
 	CurrentState = VIPState_WaitingForMinimumPlayers;
 	
@@ -349,6 +349,8 @@ public Action:OnWeaponCanUse(client, weapon) {
 	new String:entityClassName[256];
 	
 	GetEntityClassname(weapon, entityClassName, sizeof(entityClassName));
+	
+
 	
 	new String:VIPWeapon[256];
 	GetConVarString(CVarVIPWeapon, VIPWeapon, sizeof(VIPWeapon));
