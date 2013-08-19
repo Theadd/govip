@@ -23,3 +23,12 @@ This plugin will activate only when playing the maps which have its rescue zones
 * Added translation files for Spanish language.
 * Added custom sounds.
 * Fixed a bug where the VIP eventually had no weapons.
+
+**Older**
+* VIP model appears in GREEN color
+* Prevented game restart after killing VIP or reaching to the rescue zone
+* Added some colors on GO:VIP chat messages
+* GO:VIP Plugin will only work on maps listed in rescue_zones.cfg (No need to use other plugins such as nextmapmode to enable VIP mod only on VIP maps)
+* Prevented "Terrorist Win" after VIP have been rescued and then died.
+* Added plugin info (Since there was no info provided)
+
