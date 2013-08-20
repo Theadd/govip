@@ -19,6 +19,10 @@ GO:VIP
 This plugin will activate only when playing the maps which have its rescue zones configured in **addons/sourcemod/configs/rescue_zones.cfg**
 
 ## CHANGELOG
+**20-Aug-2013**
+* Added vip_vertigo map as additional map.
+* Completed translation files for english and spanish languages.
+
 **19-Aug-2013**
 * Added translation files for Spanish language.
 * Added custom sounds.
@@ -31,8 +35,26 @@ This plugin will activate only when playing the maps which have its rescue zones
 * GO:VIP Plugin will only work on maps listed in rescue_zones.cfg (No need to use other plugins such as nextmapmode to enable VIP mod only on VIP maps)
 * Prevented "Terrorist Win" after VIP have been rescued and then died.
 * Added plugin info (Since there was no info provided)
+* Added additional cash to VIP player when reaching rescue zone.
 
 ## ADDITIONAL MAPS
+GO:VIP Specific maps:
+### <a href="http://csgo.gamebanana.com/maps/175986">vip_vertigo</a>
+<a href="http://csgo.gamebanana.com/maps/175986"><img src="http://csgo.gamebanana.com/maps/embeddables/175986?type=small"/></a>
+
+Rescue zone is in a chopper at terrorists spawn.
+##### Add in rescue_zones.cfg:
+
+    "vip_vertigo"
+    {
+    	"Rescue Zone"
+    	{
+    		"coords" "-1189.88 1495.94 11602.58"
+    		"radius" "100"
+    	}
+    }
+
+=====
 The following maps are well suited for playing in VIP Mod mode even not being developed for it.
 
 ### <a href="http://csgo.gamebanana.com/maps/169201">ar_nomercy</a>
