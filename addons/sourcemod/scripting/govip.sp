@@ -482,3 +482,4 @@ stock PlayYouAreVipSound(client)
 		ClientCommand(client, "play *%s", "govip/youarevip.mp3");
 	}
 }
+
