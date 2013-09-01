@@ -3,9 +3,9 @@ GO:VIP
 
  [CS:GO] VIP Mode - GO:VIP is a simple VIP mode for Counter-Strike: Global Offensive. At the beginning of each round, a random Counter-Terrorist will become the VIP. It is up to the rest of the Counter-Terrorists to escort the VIP safely to one of the rescue zones on the map. It is up to the Terrorists to kill the VIP before he is able to escape. The VIP is equipped with only a pistol with limited ammo and a knife.
 
- Based on the old source of CS:GO VIP Mod:
- http://forums.alliedmods.net/showthread.php?t=188953
- 
+#### DISCLAIMER
+Originally created by <a href="https://github.com/KyleSanderson">KyleS</a> for CSS and ported by <a href="https://github.com/AnthonyIacono">pimpinjuice</a> to CS:GO, published in <a href="http://alliedmods.net">alliedmods.net</a> in February 2012, last update was eight months later, old post <a href="http://forums.alliedmods.net/showthread.php?t=188953">here</a>, old github project <a href="https://github.com/AnthonyIacono/GOVIP">here</a>.
+Since there is no activity from them and I had <a href="https://github.com/AnthonyIacono/GOVIP/issues/1">no reply</a> in order to keep their project alive, I've decided to publish current development branch as a new project, giving them proper credits.
  
 ## REQUIREMENTS
 * SDK Hooks (CS:GO Build): http://users.alliedmods.net/~psychon.../sdkhooks/2.2/
