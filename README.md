@@ -1,60 +1,29 @@
 GO:VIP
 =====
 
- [CS:GO] VIP Mode - GO:VIP is a simple VIP mode for Counter-Strike: Global Offensive. At the beginning of each round, a random Counter-Terrorist will become the VIP. It is up to the rest of the Counter-Terrorists to escort the VIP safely to one of the rescue zones on the map. It is up to the Terrorists to kill the VIP before he is able to escape. The VIP is equipped with only a pistol with limited ammo and a knife.
+ **[CS:GO] VIP Mode - GO:VIP** is a simple VIP mode for Counter-Strike: Global Offensive. At the beginning of each round, a random Counter-Terrorist will become the VIP. It is up to the rest of the Counter-Terrorists to escort the VIP safely to one of the rescue zones on the map. It is up to the Terrorists to kill the VIP before he is able to escape. The VIP is equipped with only a pistol with limited ammo and a knife.
 
 #### DISCLAIMER
 Originally created by <a href="https://github.com/KyleSanderson">KyleS</a> for CSS and ported by <a href="https://github.com/AnthonyIacono">pimpinjuice</a> to CS:GO, published in <a href="http://alliedmods.net">alliedmods.net</a> in February 2012, last update was eight months later, old post <a href="http://forums.alliedmods.net/showthread.php?t=188953">here</a>, old github project <a href="https://github.com/AnthonyIacono/GOVIP">here</a>.
 Since there is no activity from them and I had <a href="https://github.com/AnthonyIacono/GOVIP/issues/1">no reply</a> in order to keep their project alive, I've decided to publish current development branch as a new project, giving them proper credits.
- 
-## REQUIREMENTS
-* SDK Hooks (CS:GO Build): http://users.alliedmods.net/~psychon.../sdkhooks/2.2/
 
 ## INSTALLATION
 0. Install required extension: http://users.alliedmods.net/~psychon.../sdkhooks/2.2/
-1. Copy addons and sound folders into your csgo folder.
+1. Copy **addons**, **maps**, **materials** and **sound** folders into your csgo folder.
 2. Restart your server.
+3. Change map to **as_vertigo**.
 
 ## INSTRUCTIONS
-This plugin will activate only when playing the maps which have its rescue zones configured in **addons/sourcemod/configs/rescue_zones.cfg**
+This plugin will **only** activate when playing maps which have its rescue zones configured in **addons/sourcemod/configs/rescue_zones.cfg**
 
-## CHANGELOG
-**20-Aug-2013**
-* Added vip_vertigo map as additional map.
-* Completed translation files for english and spanish languages.
-
-**19-Aug-2013**
-* Added translation files for Spanish language.
-* Added custom sounds.
-* Fixed a bug where the VIP eventually had no weapons.
-
-**Older**
-* VIP model appears in GREEN color
-* Prevented game restart after killing VIP or reaching to the rescue zone
-* Added some colors on GO:VIP chat messages
-* GO:VIP Plugin will only work on maps listed in rescue_zones.cfg (No need to use other plugins such as nextmapmode to enable VIP mod only on VIP maps)
-* Prevented "Terrorist Win" after VIP have been rescued and then died.
-* Added plugin info (Since there was no info provided)
-* Added additional cash to VIP player when reaching rescue zone.
+## FEATURES
+* English and Spanish translation files (Post an <a href="https://github.com/Theadd/govip/issues">issue</a> to contribute with translations).
+* Includes custom <a href="https://github.com/Theadd/govip/tree/master/sound/govip">sounds</a>.
+* VIP player is painted green.
+* VIP player gets additional cash when rescued.
+* Included **VIP maps** by default: <a href="http://csgo.gamebanana.com/maps/175986">as_vertigo</a>.
 
 ## ADDITIONAL MAPS
-GO:VIP Specific maps:
-### <a href="http://csgo.gamebanana.com/maps/175986">as_vertigo</a>
-[![](http://csgo.gamebanana.com/maps/embeddables/175986?type=small)](http://csgo.gamebanana.com/maps/175986)
-
-Rescue zone is in a chopper at terrorists spawn.
-##### Add in rescue_zones.cfg:
-
-    "as_vertigo"
-    {
-    	"Rescue Zone"
-    	{
-    		"coords" "-1189.88 1495.94 11602.58"
-    		"radius" "100"
-    	}
-    }
-
-=====
 The following maps are well suited for playing in VIP Mod mode even not being developed for it.
 
 ### <a href="http://csgo.gamebanana.com/maps/169201">ar_nomercy</a>
@@ -83,3 +52,25 @@ Rescue zone is a chapel near terrorists spawn, this is a big and resource intens
     	}
     }
 
+## CHANGELOG
+**02-Sep-2013**
+* Fixed vip\_vertigo, renamed to as_vertigo and added custom "VIP RESCUE ZONE" decals.
+* Added as_vertigo as the included default map in plugin downloads.
+
+**20-Aug-2013**
+* Added vip_vertigo map as additional map.
+* Completed translation files for english and spanish languages.
+
+**19-Aug-2013**
+* Added translation files for Spanish language.
+* Added custom sounds.
+* Fixed a bug where the VIP eventually had no weapons.
+
+**Older**
+* VIP model appears in GREEN color
+* Prevented game restart after killing VIP or reaching to the rescue zone
+* Added some colors on GO:VIP chat messages
+* GO:VIP Plugin will only work on maps listed in rescue_zones.cfg (No need to use other plugins such as nextmapmode to enable VIP mod only on VIP maps)
+* Prevented "Terrorist Win" after VIP have been rescued and then died.
+* Added plugin info (Since there was no info provided)
+* Added additional cash to VIP player when reaching rescue zone.
