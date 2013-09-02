@@ -23,7 +23,7 @@ public Plugin:myinfo =
 	name = "GO:VIP",
 	author = "KyleS (CSS VIP), pimpinjuice (CSGO Port), Theadd (Developer)",
 	description = "GO:VIP is a simple VIP mode. At the beginning of each round, a random Counter-Terrorist will become the VIP. It is up to the rest of the Counter-Terrorists to escort the VIP safely to one of the rescue zones on the map. It is up to the Terrorists to kill the VIP before he is able to escape. The VIP is equipped with only a pistol with limited ammo and a knife.",
-	version = "1.3",
+	version = "1.31",
 	url = "https://forums.alliedmods.net/showthread.php?p=1740993"
 };
 
