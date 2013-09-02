@@ -378,6 +378,7 @@ bool:IsValidPlayer(client) {
 }
 
 GetRandomPlayerOnTeam(team, ignore = -1) {
+	//decl c;
 	new teamClientCount = GetTeamClientCount(team);
 	
 	if(teamClientCount <= 0) {
@@ -395,13 +396,20 @@ GetRandomPlayerOnTeam(team, ignore = -1) {
 		if (IsValidPlayer(client)) {
 			if (IsFakeClient(client)) {
 				fake_count++;
-				if (fake_count < 15) {
+				if (fake_count == 15) {
+					ignore = 0;
+				}
+				if (fake_count < 45) {
 					loop_again = true;
 				}
 			}
 		}
 	} while((teamClientCount > 1 && client == ignore) || !IsClientInGame(client) || GetClientTeam(client) != team || loop_again);
+	LogMessage("GetRandomPlayerOnTeam -> fake_count: %d ", fake_count);
 	
+	/*for (c=1;c<=MaxClients;c++) {
+	
+	}*/
 	return client;
 }
 
