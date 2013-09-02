@@ -74,3 +74,24 @@ Rescue zone is a chapel near terrorists spawn, this is a big and resource intens
 * Prevented "Terrorist Win" after VIP have been rescued and then died.
 * Added plugin info (Since there was no info provided)
 * Added additional cash to VIP player when reaching rescue zone.
+
+## CREDITS
+* pimpinjuice
+
+**Original credits from <a href="http://forums.alliedmods.net/showthread.php?t=188953">pimpinjuice post</a>:**
+* KyleS - His CS:S VIP plugin.
+* psychonic - Awesome SDK Hooks support!
+* SM Devs - Quick CS:GO support!
+* Dr!fter - Helpful as always.
+
+## KNOWN GO:VIP SERVERS
+* <a href="http://www.gametracker.com/server_info/37.187.9.5:27015/">[ESP] Tick128 + MODS: VIP+ZOMBIE+GG [FreeADMIN+FastDL]</a>
+    
+    Server used to test/develop this plugin. Server default language is spanish so it will use the spanish translation files for the plugin chat messages. Use "!nominate" > as_vertigo and "!rtv" to play VIP mod or email me your SteamID to get admin rights.
+
+## LINKS
+* <a href="https://github.com/Theadd/govip">GITHUB Project</a>
+* Alliedmods forum post (WIP)
+* <a href="https://github.com/Theadd/govip/issues">Submit bugs and suggestions</a>
+* <a href="https://github.com/Theadd/govip/archive/master.zip">Download</a>
+
