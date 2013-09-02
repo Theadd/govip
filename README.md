@@ -56,6 +56,8 @@ Rescue zone is a chapel near terrorists spawn, this is a big and resource intens
 **02-Sep-2013**
 * Fixed vip\_vertigo, renamed to as_vertigo and added custom "VIP RESCUE ZONE" decals.
 * Added as_vertigo as the included default map in plugin downloads.
+* Lowered probability of bots from being VIP if there is a CT player.
+* Fixed some bugs that were added in latest commits.
 
 **20-Aug-2013**
 * Added vip_vertigo map as additional map.
