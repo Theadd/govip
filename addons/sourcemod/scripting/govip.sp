@@ -21,9 +21,9 @@
 public Plugin:myinfo =
 {
 	name = "GO:VIP",
-	author = "KyleS (CSS VIP) & pimpinjuice (CSGO Port)",
+	author = "KyleS (CSS VIP), pimpinjuice (CSGO Port), Theadd (Developer)",
 	description = "GO:VIP is a simple VIP mode. At the beginning of each round, a random Counter-Terrorist will become the VIP. It is up to the rest of the Counter-Terrorists to escort the VIP safely to one of the rescue zones on the map. It is up to the Terrorists to kill the VIP before he is able to escape. The VIP is equipped with only a pistol with limited ammo and a knife.",
-	version = "1.20",
+	version = "1.3",
 	url = "https://forums.alliedmods.net/showthread.php?p=1740993"
 };
 
@@ -148,7 +148,8 @@ public OnMapStart() {
 // 03. Events
 public Action:Event_RoundStart(Handle:event, const String:name[], bool:dontBroadcast) {
 	RoundComplete = false;
-	isYouAreVipPlayed = true;
+	isYouAreVipPlayed = false;
+	LogMessage("isYouAreVipPlayed reset");
 	
 	CurrentVIP = GetRandomPlayerOnTeam(CS_TEAM_CT, LastVIP);
 	
@@ -368,7 +369,8 @@ public Action:Command_JoinTeam(client, const String:command[], argc)  {
 }
 
 bool:IsValidPlayer(client) {
-	if(!IsValidEntity(client) || !IsClientConnected(client) || !IsClientInGame(client)) {
+	if (client == 0) return false;
+	if (!IsValidEntity(client) || !IsClientConnected(client) || !IsClientInGame(client)) {
 		return false;
 	}
 	
@@ -388,7 +390,7 @@ GetRandomPlayerOnTeam(team, ignore = -1) {
 	
 	do {
 		loop_again = false;
-		client = GetRandomInt(0, MaxClients);
+		client = GetRandomInt(1, MaxClients);	//EDIT: swapped 0 for 1
 		//Loop again if its a BOT
 		if (IsValidPlayer(client)) {
 			if (IsFakeClient(client)) {
@@ -434,10 +436,18 @@ StripWeapons(client) {
 		new String:weaponClassName[128];
 		GetEntityClassname(weaponID, weaponClassName, sizeof(weaponClassName));
 		
-		if(StrEqual(weaponClassName, "weapon_knife", false)) {
+		new String:VIPWeapon[256];
+		GetConVarString(CVarVIPWeapon, VIPWeapon, sizeof(VIPWeapon));
+		 
+		if(StrEqual(weaponClassName, "weapon_knife", false) || StrEqual(weaponClassName, VIPWeapon, false)) {
 			continue;
 		}
+		/*
+		if(StrEqual(weaponClassName, "weapon_knife", false)) {
+			continue;
+		}*/
 		
+		LogMessage("StripWeapons > RemovePlayerItem, clientID: %d , weapon name: %s , weapon id: %d ", client, weaponClassName, weaponID);
 		RemovePlayerItem(client, weaponID);
 		RemoveEdict(weaponID);
 	}
@@ -479,7 +489,10 @@ stock PlayYouAreVipSound(client)
 {
 	if (!isYouAreVipPlayed) {
 		isYouAreVipPlayed = true;
+		LogMessage("Playing YouAreVipSound");
 		ClientCommand(client, "play *%s", "govip/youarevip.mp3");
+	} else {
+		LogMessage("YouAreVipSound already played");
 	}
 }
 
